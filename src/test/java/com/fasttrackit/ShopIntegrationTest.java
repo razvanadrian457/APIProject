@@ -57,9 +57,10 @@ import java.util.List;
             store.setProducts(products2);
             repository.save(store);
 
-            List<Product> totalPrice = new ArrayList<>();
+            List<Basket> totalPrice = new ArrayList<>();
             Basket basket = new Basket();
-            System.out.println(basket.computeTotalPrice());
+            basket.computeTotalPrice();
+            totalPrice.add(basket);
             basketRepository.save(basket);
 
         }
