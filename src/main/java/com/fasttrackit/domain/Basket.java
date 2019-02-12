@@ -16,15 +16,20 @@ public class Basket
             sequenceName = "basket_sequence",
             initialValue = 1
     )
-
-
-    @OneToOne(targetEntity = Basket.class, mappedBy = "products",fetch = FetchType.LAZY)
-    @JoinColumn(name="basket_Id")
-    private List<Product> products = new ArrayList<>();
     private long id;
-    private int totalPrice;
+
+
+
+    @OneToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+    @JoinColumn(name="user_Id")
     private User user;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "basket_Id")
+    private List<Product> products = new ArrayList<>();
+
+
+    private int totalPrice;
     public long getId()
     {
         return id;
@@ -34,6 +39,8 @@ public class Basket
     {
         this.id = id;
     }
+
+
 
     public List<Product> getPrice()
     {

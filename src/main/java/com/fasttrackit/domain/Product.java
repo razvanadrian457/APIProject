@@ -1,6 +1,8 @@
 package com.fasttrackit.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Product
@@ -12,8 +14,8 @@ public class Product
             sequenceName = "shop_sequence",
             initialValue = 1
     )
-
     private long id;
+
     private double price;
     private String name;
     private int stock;

@@ -23,9 +23,9 @@ public class ProductController
 
     }
 
-    @RequestMapping(path = "/product/(id)", method = RequestMethod.PUT)
-    public ProductDTO updateProduct(@PathVariable long id, @RequestBody ProductDTO dto)
-    {
-        return ProductService.updateProduct(id, dto);
-    }
+//    @RequestMapping(path = "/product/(id)", method = RequestMethod.PUT)
+//    public ProductDTO updateProduct(@PathVariable long id, @RequestBody ProductDTO dto)
+//    {
+//        //return ProductService.updateProduct(id, dto);
+//    }
 }

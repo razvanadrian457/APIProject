@@ -3,10 +3,16 @@ package com.fasttrackit.domain;
 
 import javax.persistence.*;
 
-
+@Entity
 public class User {
 
-
+    @Id
+    @GeneratedValue(generator = "basket_generator")
+    @SequenceGenerator(
+            name = "basket_generator",
+            sequenceName = "basket_sequence",
+            initialValue = 1
+    )
     private long id;
 
     private String username;

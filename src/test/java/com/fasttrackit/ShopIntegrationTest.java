@@ -5,6 +5,7 @@ import com.fasttrackit.domain.Product;
 import com.fasttrackit.domain.Shop;
 import com.fasttrackit.dto.ShopDTO;
 import com.fasttrackit.persistence.BasketRepository;
+import com.fasttrackit.persistence.ProductRepository;
 import com.fasttrackit.persistence.ShopRepository;
 import com.fasttrackit.service.ShopService;
 import org.junit.Test;
@@ -16,6 +17,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -25,14 +27,16 @@ import java.util.List;
 
 
         @Autowired
+        private ProductRepository productRepository;
+        @Autowired
         private ShopRepository repository;
+        @Autowired
         private BasketRepository basketRepository;
 
 
         @Test
         public void testSave()
         {
-
             Shop store = new Shop();
             store.setName("HamShop");
             store.setAdress("str. Nicolae Teclu, nr.20");
@@ -44,24 +48,38 @@ import java.util.List;
             product1.setStock(4);
             products.add(product1);
             store.setProducts(products);
-            repository.save(store);
 
 
 
-            List<Product> products2 = new ArrayList<>();
             Product product = new Product();
             product.setName("Chappi");
             product.setPrice(35);
             product.setStock(17);
-            products2.add(product);
-            store.setProducts(products2);
+            products.add(product);
+            store.setProducts(products);
             repository.save(store);
+        }
 
-            List<Basket> totalPrice = new ArrayList<>();
+        @Test
+        public void TestSave2()
+        {
+            Iterable<Product> allProducts = productRepository.findAll();
             Basket basket = new Basket();
-            basket.computeTotalPrice();
-            totalPrice.add(basket);
-            basketRepository.save(basket);
 
+
+            List<Product> products = makeCollection(allProducts);
+            basket.setProducts(products);
+
+            basket.computeTotalPrice();
+            basketRepository.save(basket);
+        }
+
+        public static <E> List<E> makeCollection(Iterable<E> iter)
+        {
+            List<E> list = new ArrayList<E>();
+            for (E item : iter) {
+                list.add(item);
+            }
+            return list;
         }
 }

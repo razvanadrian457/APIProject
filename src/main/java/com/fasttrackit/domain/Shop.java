@@ -2,12 +2,10 @@ package com.fasttrackit.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
-@Table(name = "store")
+@Table(name = "shop")
 public class Shop
 {
     @Id
@@ -17,15 +15,15 @@ public class Shop
             sequenceName = "shop_sequence",
             initialValue = 1
     )
-
     private long id;
+
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Product> products = new ArrayList<>();
+
     private String name;
     private String adress;
     private String description;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="shop_Id")
-    private List<Product> products = new ArrayList<>();
 
     public String getDescription()
     {
@@ -37,13 +35,11 @@ public class Shop
         this.description = description;
     }
 
-    public long getId()
-    {
+    public long getId() {
         return id;
     }
 
-    public void setId(long id)
-    {
+    public void setId(long id) {
         this.id = id;
     }
 
