@@ -9,7 +9,7 @@ import java.util.List;
 public class BasketDTO
 {
     private long id;
-    private int totalPrice;
+    private double totalPrice;
     private User user;
     private List<Product> products = new ArrayList<>();
 
@@ -25,12 +25,17 @@ public class BasketDTO
         this.products = products;
     }
 
-    public int getTotalPrice()
+    public double getTotalPrice()
     {
+        double totalPrice = 0;
+        for(Product product: products)
+        {
+            totalPrice += product.getPrice();
+        }
         return totalPrice;
     }
 
-    public void setTotalPrice(int totalPrice)
+    public void setTotalPrice(double totalPrice)
     {
         this.totalPrice = totalPrice;
     }
@@ -53,16 +58,6 @@ public class BasketDTO
     public void setId(long id)
     {
         this.id = id;
-    }
-
-    public double computeTotalPrice()
-    {
-        double total = 0;
-        for (Product product : products)
-        {
-            total += product.getPrice();
-        }
-        return total;
     }
 
 

@@ -19,6 +19,8 @@ public class Product
     private double price;
     private String name;
     private int stock;
+    private String imagePath;
+
 
 
     public long getId()
@@ -31,6 +33,14 @@ public class Product
         this.id = id;
     }
 
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     public int getStock()
     {

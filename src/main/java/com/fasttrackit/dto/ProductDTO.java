@@ -6,6 +6,7 @@ public class ProductDTO
     private long id;
 
     private String name;
+    private String imagePath;
     private double price;
 
     private int stock;
@@ -28,6 +29,14 @@ public class ProductDTO
     public void setId(long id)
     {
         this.id = id;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public String getName()

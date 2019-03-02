@@ -68,6 +68,8 @@ public class BasketService
     private BasketDTO convertToDTO(Basket basket)
     {
         BasketDTO basketDTO = new BasketDTO();
+        basketDTO.setProducts(basket.getProducts());
+        basketDTO.setTotalPrice(basket.getTotalPrice());
         basketDTO.setUser(basket.getUser());
         basketDTO.setId(basket.getId());
         return basketDTO;
@@ -77,6 +79,7 @@ public class BasketService
     {
         Basket basket1 = new Basket();
         basket.setUser(basket.getUser());
+        basket.setTotalPrice(basket.getTotalPrice());
         basket.setId(basket.getId());
         return basket1;
     }
@@ -95,6 +98,7 @@ public class BasketService
     {
         Basket basket = basketRepository.findOne(id);
         basket.setUser(dto.getUser());
+        basket.setTotalPrice(dto.getTotalPrice());
         Basket save = basketRepository.save(basket);
 
         return convertToDTO(save);

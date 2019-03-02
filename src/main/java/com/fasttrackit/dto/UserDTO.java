@@ -7,6 +7,7 @@ public class UserDTO
     private String username;
     private String name;
     private String firstName;
+    private String password;
     private int age;
 
     public long getId()
@@ -17,6 +18,17 @@ public class UserDTO
     public void setId(long id)
     {
         this.id = id;
+    }
+
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password
+    ) {
+        this.password = password;
     }
 
     public int getAge()

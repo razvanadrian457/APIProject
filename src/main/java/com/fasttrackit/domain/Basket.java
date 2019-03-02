@@ -29,7 +29,7 @@ public class Basket
     private List<Product> products = new ArrayList<>();
 
 
-    private int totalPrice;
+    private double totalPrice;
     public long getId()
     {
         return id;
@@ -52,12 +52,17 @@ public class Basket
         this.products = products;
     }
 
-    public int getTotalPrice()
+    public double getTotalPrice()
     {
+        int totalPrice = 0;
+        for(Product product: products)
+        {
+            totalPrice += product.getPrice();
+        }
         return totalPrice;
     }
 
-    public void setTotalPrice(int totalPrice)
+    public void setTotalPrice(double totalPrice)
     {
         this.totalPrice = totalPrice;
     }
@@ -72,15 +77,7 @@ public class Basket
         this.user = user;
     }
 
-    public double computeTotalPrice()
-    {
-        double total = 0;
-        for (Product product : products)
-        {
-            total += product.getPrice();
-        }
-        return total;
-    }
+
 
     public List<Product> getProducts() {
         return products;

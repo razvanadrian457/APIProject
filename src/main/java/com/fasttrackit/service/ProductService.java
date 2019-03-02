@@ -47,10 +47,7 @@ public class ProductService
         {
             Product product = iterator.next();
 
-            ProductDTO productDTO = new ProductDTO();
-            productDTO.setName(product.getName());
-            productDTO.setId(product.getId());
-            productDTO.setStock(product.getStock());
+            ProductDTO productDTO = convertToDto(product);
 
             int nrOfProd = 0;
 
@@ -67,8 +64,9 @@ public class ProductService
         ProductDTO productDTO = new ProductDTO();
         productDTO.setName(product.getName());
         productDTO.setId(product.getId());
-        productDTO.setPrice(productDTO.getPrice());
-        productDTO.setStock(productDTO.getStock());
+        productDTO.setImagePath(product.getImagePath());
+        productDTO.setPrice(product.getPrice());
+        productDTO.setStock(product.getStock());
         return productDTO;
     }
 
@@ -78,6 +76,7 @@ public class ProductService
         product1.setName(product1.getName());
         product1.setPrice(product1.getPrice());
         product1.setId(product1.getId());
+        product1.setImagePath(product1.getImagePath());
         product1.setStock(product1.getStock());
         return product1;
     }
