@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "basket")
-public class Basket
+@Table(name = "cart")
+public class Cart
 {
     @Id
     @GeneratedValue(generator = "basket_generator")
@@ -20,16 +20,15 @@ public class Basket
 
 
 
-    @OneToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+    @OneToOne(targetEntity = User.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_Id")
     private User user;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "basket_Id")
+    @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Product> products = new ArrayList<>();
 
 
-    private double totalPrice;
+
     public long getId()
     {
         return id;
@@ -62,10 +61,6 @@ public class Basket
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice)
-    {
-        this.totalPrice = totalPrice;
-    }
 
     public User getUser()
     {
@@ -85,9 +80,8 @@ public class Basket
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Basket{");
+        final StringBuilder sb = new StringBuilder("Cart{");
         sb.append("id=").append(id);
-        sb.append(", totalPrice=").append(totalPrice);
         sb.append(", user=").append(user);
         sb.append(", products=").append(products);
         sb.append('}');

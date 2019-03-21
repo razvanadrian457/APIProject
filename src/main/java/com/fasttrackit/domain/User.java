@@ -4,8 +4,9 @@ package com.fasttrackit.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_Id")
-public class User {
+@Table(name = "users")
+public class User
+{
 
     @Id
     @GeneratedValue(generator = "basket_generator")
@@ -14,13 +15,12 @@ public class User {
             sequenceName = "basket_sequence",
             initialValue = 1
     )
+
     private long id;
 
-    private String username;
-    private String name;
-    private String firstName;
+
+    private String email;
     private String password;
-    private int age;
 
     public long getId()
     {
@@ -42,43 +42,15 @@ public class User {
         this.password = password;
     }
 
-    public int getAge()
+    public String getEmail()
     {
-        return age;
+        return email;
     }
 
-    public void setAge(int age)
+    public void setEmail(String email)
     {
-        this.age = age;
+        this.email = email;
     }
 
-    public String getUsername()
-    {
-        return username;
-    }
 
-    public void setUsername(String username)
-    {
-        this.username = username;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public String getFirstName()
-    {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName)
-    {
-        this.firstName = firstName;
-    }
 }

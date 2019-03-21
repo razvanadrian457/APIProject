@@ -44,8 +44,7 @@ public class ShopService
     @Transactional
     public List<ShopDTO> getShops()
     {
-        Iterator<Shop> iterator =
-                shopRepository.findAll().iterator();
+        Iterator<Shop> iterator = shopRepository.findAll().iterator();
 
 
         List<ShopDTO> list = new ArrayList<>();

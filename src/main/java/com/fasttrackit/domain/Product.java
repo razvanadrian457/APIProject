@@ -16,9 +16,12 @@ public class Product
     )
     private long id;
 
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
+
     private double price;
     private String name;
-    private int stock;
     private String imagePath;
 
 
@@ -40,16 +43,6 @@ public class Product
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
-    }
-
-    public int getStock()
-    {
-        return stock;
-    }
-
-    public void setStock(int stock)
-    {
-        this.stock = stock;
     }
 
     public double getPrice()
@@ -82,7 +75,6 @@ public class Product
         sb.append("Id=").append(id);
         sb.append(", price=").append(price);
         sb.append(", name='").append(name).append('\'');
-        sb.append(", stock=").append(stock);
         sb.append('}');
         return sb.toString();
     }

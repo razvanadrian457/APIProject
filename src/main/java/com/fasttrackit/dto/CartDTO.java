@@ -6,48 +6,44 @@ import com.fasttrackit.domain.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasketDTO
+public class CartDTO
 {
     private long id;
-    private double totalPrice;
-    private User user;
-    private List<Product> products = new ArrayList<>();
+    private UserDTO user;
+    private List<ProductDTO> products = new ArrayList<>();
 
 
 
-    public List<Product> getProducts()
+    public List<ProductDTO> getProducts()
     {
         return products;
     }
 
-    public void setProducts(List<Product> products)
-    {
-        this.products = products;
-    }
+
 
     public double getTotalPrice()
     {
         double totalPrice = 0;
-        for(Product product: products)
+        for(ProductDTO product: products)
         {
             totalPrice += product.getPrice();
         }
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice)
-    {
-        this.totalPrice = totalPrice;
-    }
-
-    public User getUser()
+    public UserDTO getUser()
     {
         return user;
     }
 
-    public void setUser(User user)
+    public void setUser(UserDTO user)
     {
         this.user = user;
+    }
+
+    public void setProducts(List<ProductDTO> products)
+    {
+         this.products = products;
     }
 
     public long getId()

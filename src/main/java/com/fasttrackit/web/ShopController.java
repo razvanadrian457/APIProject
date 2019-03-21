@@ -21,7 +21,7 @@ public class ShopController
     @RequestMapping(path = "/shop", method = RequestMethod.POST)
     public void saveShop(@RequestBody ShopDTO shop)
     {
-        //shopService.saveShop(shop);
+        shopService.saveShop(shop);
     }
 
     @RequestMapping(path = "/shop/(id)", method = RequestMethod.PUT)

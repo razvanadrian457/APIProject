@@ -66,7 +66,6 @@ public class ProductService
         productDTO.setId(product.getId());
         productDTO.setImagePath(product.getImagePath());
         productDTO.setPrice(product.getPrice());
-        productDTO.setStock(product.getStock());
         return productDTO;
     }
 
@@ -77,7 +76,6 @@ public class ProductService
         product1.setPrice(product1.getPrice());
         product1.setId(product1.getId());
         product1.setImagePath(product1.getImagePath());
-        product1.setStock(product1.getStock());
         return product1;
     }
 
@@ -85,7 +83,6 @@ public class ProductService
     {
         Product product1 = productRepository.findOne(id);
         product1.setPrice(dto.getPrice());
-        product1.setStock(dto.getStock());
         product1.setName(dto.getName());
 
         Product save = productRepository.save(product1);
