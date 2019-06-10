@@ -22,7 +22,8 @@ import java.util.List;
 
     @RunWith(SpringJUnit4ClassRunner.class)
     @ContextConfiguration(classes = ShopApplication.class, loader = SpringApplicationContextLoader.class, initializers = ConfigFileApplicationContextInitializer.class)
-    public class ShopIntegrationTest {
+    public class ShopIntegrationTest
+    {
 
 
         @Autowired
@@ -106,5 +107,4 @@ import java.util.List;
             userRepository.save(user);
         }
 
-
-}
+    }
